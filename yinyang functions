@@ -1,0 +1,26 @@
+def inDatabase(goodOrg,protein):
+	go = goodOrg
+	p = protein
+
+	from Bio.Blast import NCBIWWW
+	blastRecords = NCBIWWW.qblast("blastn",p,go)
+	
+
+def evaluate(goodOrg,goodPro,badPro):
+	go = goodOrg
+	gp = goodPro
+	bp = badPro
+	solution = true
+
+	for solution
+		for protein in bp
+			if inDatabase(go,protein)
+				solution = false
+		for protein in gp
+			if not inDatabase(go,protein)
+				solution = false
+
+	if solution
+		return "good"
+	else
+		return "bad"
