@@ -3,8 +3,12 @@ def inDatabase(goodOrg,protein):
 	p = protein
 
 	from Bio.Blast import NCBIWWW
-	blastRecords = NCBIWWW.qblast("blastn",p,go)
+	resultHandle = NCBIWWW.qblast("blastn",p,go)
 	
+	# Parsing results from BLAST
+	from Bio.Blast import NCBIXML
+	blastRecords = NCBIXML.parse(resultHandle)
+	return next(blastRecords)
 
 def evaluate(goodOrg,goodPro,badPro):
 	go = goodOrg
